@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from base import models
 
 # Create your views here.
 
@@ -10,7 +11,9 @@ def home(request):
 
 def about(request):
 	template_name = 'about.html'
-	context = {}
+	context = {
+		'category': models.Category.objects.all()
+	}
 	return render(request, template_name, context)
 
 

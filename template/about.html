@@ -127,5 +127,8 @@
       </div>
     </div>
 
+    {% for item in category %}
+      <div>{{ item.name }}</div>
+    {% endfor %}
 
   {% endblock %}
