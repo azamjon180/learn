@@ -19,9 +19,22 @@ def service(request):
 	context = {}
 	return render(request, template_name, context)
 
+
 def blog(request):
 	template_name = 'blog.html'
 	context = {}
 	return render(request, template_name, context)
+
+
+def contact(request):
+	template_name = 'contact.html'
+	context = {}
+	return render(request, template_name, context)
+
+
+
+
+
+
 
 
