@@ -5,7 +5,9 @@ from base import models
 
 def home(request):
 	template_name = 'home.html'
-	context = {}
+	context = {
+		
+	}
 	return render(request, template_name, context)
 
 
@@ -35,6 +37,10 @@ def contact(request):
 	return render(request, template_name, context)
 
 
+def gallery(request):
+	template_name = 'gallery.html'
+	context = {}
+	return render(request, template_name, context)
 
 
 
