@@ -14,5 +14,6 @@ urlpatterns = [
 	path('testimonials/', views.testimonials, name = 'testimonials'),
 	path('faq/', views.faq, name = 'faq'),
 	path('why/', views.why, name = 'why'),
+	path('blog/<int:myid>/', views.blogitem, name = 'blogitem'),
 ]
 

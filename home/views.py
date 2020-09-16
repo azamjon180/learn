@@ -10,24 +10,34 @@ def home(request):
 		'about': models.Post.objects.filter(category__name = 'about'),
 		'product' : models.Product.objects.all().order_by('-id'),
 		'amazon' : models.Amazon.objects.get(active = True),
-		'testimonials' : models.Testimonials.objects.all().order_by('-id')
+		'testimonials' : models.Testimonials.objects.all().order_by('-id'),
+		'blog' : models.Blog.objects.all().order_by('-id'),
+		'service' : models.Title.objects.get(link = 'service'),
+		'products' : models.Title.objects.get(link = 'product'),
+		'testimonial' : models.Title.objects.get(link = 'testimonials'),
+		'blogs' : models.Title.objects.get(link = 'blog'),
 	}
 	return render(request, template_name, context)
 
 
 def about(request):
 	template_name = 'about.html'
+	banner = models.Banner.objects.get(link = 'about')
 	context = {
 		'about': models.Post.objects.filter(category__name = 'about'),
 		'team': models.Post.objects.filter(category__name = 'team').order_by('-id'),
 		'amazon' : models.Amazon.objects.get(active = True),
+		'banner' : banner
 	}
 	return render(request, template_name, context)
 
 
 def service(request):
 	template_name = 'service.html'
-	context = {}
+	banner = models.Banner.objects.get(link = 'service')
+	context = {
+		'banner' : banner
+	}
 	return render(request, template_name, context)
 
 
@@ -67,3 +77,10 @@ def why(request):
 	return render(request, template_name, context)
 
 
+def blogitem(request, myid):
+	template_name = 'singblog.html'
+	blogitem = models.Blog.objects.get(id = myid)
+	context = {
+		'blogitem': blogitem
+	}
+	return render(request, template_name, context)

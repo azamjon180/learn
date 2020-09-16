@@ -40,7 +40,11 @@ INSTALLED_APPS = [
     'home',
     'base',
     'mptt',
+    'ckeditor',
+    'ckeditor_uploader',
 ]
+
+CKEDITOR_UPLOAD_PATH = 'ckupload/'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

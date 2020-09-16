@@ -1,5 +1,5 @@
 from django.db import models
-
+from ckeditor_uploader.fields import RichTextUploadingField
 from mptt.models import MPTTModel, TreeForeignKey
 
 class Genre(MPTTModel):
@@ -84,4 +84,39 @@ class Testimonials(models.Model):
 	def __str__(self):
 		return self.name
 
-		
+
+class Blog(models.Model):
+	title = models.TextField()
+	author = models.CharField(max_length = 256, null = True, blank = True)
+	description = models.TextField(null = True, blank = True)
+	content = RichTextUploadingField(null = True, blank = True)
+	image = models.ImageField(upload_to = 'blog')
+	date = models.DateTimeField()
+	link = models.CharField(max_length = 64, null = True, blank = True)
+	active = models.BooleanField(default = False)
+
+	def __str__(self):
+		return self.title
+
+
+class Title(models.Model):
+	title = models.TextField()
+	description = models.TextField(null = True, blank = True)
+	link = models.CharField(max_length = 256, null = True, blank = True)
+	active = models.BooleanField(default = False)
+
+	def __str__(self):
+		return self.title
+
+
+class Banner(models.Model):
+	title = models.TextField()
+	description = models.TextField(null = True, blank = True)
+	image = models.ImageField(upload_to = 'banner', null = True, blank = True)
+	link = models.CharField(max_length = 256, null = True, blank = True)
+	active = models.BooleanField(default = False)
+
+	def __str__(self):
+		return self.title
+
+
