@@ -6,7 +6,11 @@ from base import models
 def home(request):
 	template_name = 'home.html'
 	context = {
-		
+		'slider' : models.Slider.objects.all().order_by('-id'),
+		'about': models.Post.objects.filter(category__name = 'about'),
+		'product' : models.Product.objects.all().order_by('-id'),
+		'amazon' : models.Amazon.objects.get(active = True),
+		'testimonials' : models.Testimonials.objects.all().order_by('-id')
 	}
 	return render(request, template_name, context)
 
@@ -14,7 +18,9 @@ def home(request):
 def about(request):
 	template_name = 'about.html'
 	context = {
-		'category': models.Category.objects.all()
+		'about': models.Post.objects.filter(category__name = 'about'),
+		'team': models.Post.objects.filter(category__name = 'team').order_by('-id'),
+		'amazon' : models.Amazon.objects.get(active = True),
 	}
 	return render(request, template_name, context)
 
@@ -43,7 +49,21 @@ def gallery(request):
 	return render(request, template_name, context)
 
 
+def testimonials(request):
+	template_name = 'testimonials.html'
+	context = {}
+	return render(request, template_name, context)
 
 
+def faq(request):
+	template_name = 'faq.html'
+	context = {}
+	return render(request, template_name, context)
+
+
+def why(request):
+	template_name = 'why.html'
+	context = {}
+	return render(request, template_name, context)
 
 
