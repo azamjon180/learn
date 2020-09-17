@@ -3,7 +3,7 @@
 
 {% load static %}
 
-{% block title %} Contact {% endblock %}
+{% block title %} {{ banner.title }} {% endblock %}
   
   {% block content %}
     
@@ -23,13 +23,13 @@
                   <input type="text" id="fullname" class="form-control" placeholder="Full Name">
                 </div>
               </div>
+
               <div class="row form-group">
                 <div class="col-md-12">
                   <label class="font-weight-bold" for="email">Email</label>
                   <input type="email" id="email" class="form-control" placeholder="Email Address">
                 </div>
               </div>
-
 
               <div class="row form-group">
                 <div class="col-md-12 mb-3 mb-md-0">
@@ -57,15 +57,15 @@
 
           <div class="col-lg-4">
             <div class="p-4 mb-3 bg-white">
-              <h3 class="h5 text-black mb-3">Contact Info</h3>
-              <p class="mb-0 font-weight-bold">Address</p>
-              <p class="mb-4">203 Fake St. Mountain View, San Francisco, California, USA</p>
+              <h3 class="h5 text-black mb-3">{{ info.title }}</h3>
+              <p class="mb-0 font-weight-bold">{{ address.title }}</p>
+              <p class="mb-4">{{ address.description }}</p>
 
-              <p class="mb-0 font-weight-bold">Phone</p>
-              <p class="mb-4"><a href="#">+1 232 3235 324</a></p>
+              <p class="mb-0 font-weight-bold">{{ phone.title }}</p>
+              <p class="mb-4"><a href="tel:{{ phone.description }}">{{ phone.description }}</a></p>
 
-              <p class="mb-0 font-weight-bold">Email Address</p>
-              <p class="mb-0"><a href="#">youremail@domain.com</a></p>
+              <p class="mb-0 font-weight-bold">{{ email.title }}</p>
+              <p class="mb-0"><a href="/{{ email.description }}">{{ email.description }}</a></p>
 
             </div>
             
@@ -81,52 +81,25 @@
         
         <div class="row mb-5">
           <div class="col-md-12">
-            <h2 class="site-section-heading text-center text-white text-uppercase">Testimonials</h2>
+            <h2 class="site-section-heading text-center text-white text-uppercase">{{ testi.title }}</h2>
           </div>
         </div>
 
         <div class="nonloop-block-14 owl-carousel">
           
-          
+          {% for item in testis %}
+
             <div class="d-block block-testimony mx-auto text-center">
               <div class="person w-25 mx-auto mb-4">
-                <img src="{% static 'images/person_1.jpg' %}" alt="Image" class="img-fluid rounded-circle w-25 mx-auto">
+                <img src="{{ item.image.url }}" alt="{{ item.name }}" class="img-fluid rounded-circle w-25 mx-auto">
               </div>
               <div>
-                <h2 class="h5 mb- text-white4 text-white">Katie Johnson</h2>
-                <blockquote class="text-white">&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias accusantium qui optio, possimus necessitatibus voluptate aliquam velit nostrum tempora ipsam!&rdquo;</blockquote>
+                <h2 class="h5 mb- text-white4 text-white">{{ item.name }}</h2>
+                <blockquote class="text-white">&ldquo;{{ item.description }}&rdquo;</blockquote>
               </div>
             </div>
           
-            <div class="d-block block-testimony mx-auto text-center">
-              <div class="person w-25 mx-auto mb-4">
-                <img src="{% static 'images/person_2.jpg' %}" alt="Image" class="img-fluid rounded-circle w-25 mx-auto">
-              </div>
-              <div>
-                <h2 class="h5 mb-4 text-white">Jun Mars</h2>
-                <blockquote class="text-white">&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias accusantium qui optio, possimus necessitatibus voluptate aliquam velit nostrum tempora ipsam!&rdquo;</blockquote>
-              </div>
-          </div>
-          
-            <div class="d-block block-testimony mx-auto text-center">
-              <div class="person w-25 mx-auto mb-4">
-                <img src="{% static 'images/person_3.jpg' %}" alt="Image" class="img-fluid rounded-circle w-25 mx-auto">
-              </div>
-              <div>
-                <h2 class="h5 mb-4 text-white">Shane Holmes</h2>
-                <blockquote class="text-white">&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias accusantium qui optio, possimus necessitatibus voluptate aliquam velit nostrum tempora ipsam!&rdquo;</blockquote>
-              </div>
-          </div>
-          
-            <div class="d-block block-testimony mx-auto text-center">
-              <div class="person w-25 mx-auto mb-4">
-                <img src="{% static 'images/person_4.jpg' %}" alt="Image" class="img-fluid rounded-circle w-25 mx-auto">
-              </div>
-              <div>
-                <h2 class="h5 mb-4 text-white">Mark Johnson</h2>
-                <blockquote class="text-white">&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias accusantium qui optio, possimus necessitatibus voluptate aliquam velit nostrum tempora ipsam!&rdquo;</blockquote>
-              </div>
-          </div>
+          {% endfor %}
 
         </div>
 

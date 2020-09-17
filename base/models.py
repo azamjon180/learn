@@ -120,3 +120,29 @@ class Banner(models.Model):
 		return self.title
 
 
+class Service(models.Model):
+	title = models.TextField()
+	description = models.TextField(null = True, blank = True)
+	content = RichTextUploadingField(null = True, blank = True)
+	image = models.ImageField(upload_to = 'service', null = True, blank = True)
+	icon = models.TextField(null = True, blank = True)
+	link = models.CharField(max_length = 64, null = True, blank = True)
+	active = models.BooleanField(default = False)
+
+	def __str__(self):
+		return self.title
+
+
+class Faq(models.Model):
+	question = models.TextField()
+	answer = models.TextField(null = True, blank = True)
+
+	def __str__(self):
+		return self.question
+
+
+class Gallery(models.Model):
+	image = models.ImageField()
+
+
+
